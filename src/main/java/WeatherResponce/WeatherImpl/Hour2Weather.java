@@ -10,14 +10,11 @@ import org.json.JSONObject;
 public class Hour2Weather implements WeatherInterface {
 
     @Override
-    public String doesSomething(String locationKey) {
+    public String doesSomething(JSONObject parameters) {
+        String locationKey = parameters.getString("Key");
         String URL="http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/";
-        JSONArray res;
-        try {
-            res = (new JSONArray(GETRequest.sendRequest(URL + locationKey + APIKey.KEY+"&metric=true")));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        JSONArray res = (new JSONArray(GETRequest.sendRequest(URL + locationKey + APIKey.KEY+"&metric=true")));
+
         StringBuilder ivrResponse= new StringBuilder();
         for (int i=0;i<2;i++){
             ivrResponse.append(HoursFormat.formatHours(res.getJSONObject(i), "In " + (i + 1) + " hour it will be "));

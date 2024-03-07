@@ -1,6 +1,8 @@
 package WeatherResponce;
 
+import org.json.JSONObject;
+
 public interface WeatherInterface {
-    String doesSomething(String locationKey);
+    String doesSomething(JSONObject parameters);
 }
 
