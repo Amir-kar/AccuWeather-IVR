@@ -14,9 +14,6 @@ import java.util.Map;
 public class Weather implements RequestHandler<Map<String, Object>, Map<String, String>> {
     @Override
     public Map<String, String> handleRequest(Map<String, Object> stringObjectMap, Context context) {
-//        LambdaLogger logger= context.getLogger();
-//        logger.log(stringObjectMap.toString());
-
 
         JSONObject parameters = new JSONObject(stringObjectMap);
 
