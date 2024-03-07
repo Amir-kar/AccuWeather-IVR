@@ -3,6 +3,7 @@ package Options;
 import WeatherResponce.WeatherImpl.*;
 
 public enum Options {
+    FIND( FindKey.class),
     CURRENT( CurrentWeather.class),
     HOURS_1( Hour1Weather.class),
     HOURS_2(Hour2Weather .class),
