@@ -1,8 +1,5 @@
 package Util;
 
-import org.json.JSONException;
-
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -13,12 +10,16 @@ public class GETRequest {
     GETRequest(String URL){
         this.URL=URL;
     }
-    public static String sendRequest(String URL) throws IOException, InterruptedException, JSONException {
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(URL))
-                .build();
+    public static String sendRequest(String URL) {
+        try {
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(URL))
+                    .build();
 
-        return client.send(request, HttpResponse.BodyHandlers.ofString()).body();
+            return client.send(request, HttpResponse.BodyHandlers.ofString()).body();
+        }catch (Exception e){
+            throw new RuntimeException();
+        }
     }
 }
